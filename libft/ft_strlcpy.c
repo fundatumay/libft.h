@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isalpha.c                                          :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftumay <ftumay@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/13 15:46:57 by ftumay            #+#    #+#             */
-/*   Updated: 2022/02/13 16:09:43 by ftumay           ###   ########.tr       */
+/*   Created: 2022/02/28 10:49:42 by ftumay            #+#    #+#             */
+/*   Updated: 2022/02/28 10:49:46 by ftumay           ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-//alfabetik karakter testi yapar
+//Diziyi boyutu kadar kopyalıyor ancak dizinin uzunluğunu döndürüyor
 
-int	ft_isalpha(int c)
+size_t	ft_strlcpy(char *dest, char *src, size_t destsize)
 {
-	return ((c <= 'z' && c >= 'a') || (c <= 'Z' && c >= 'A'));
+	size_t i;
+	int	a;
+
+	i = 0;
+	while (src[i] && i < (destsize - 1))
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	src[i] = '\0';
+	a = ft_strlen(src);
+	return(a);
 }
 
-/*int	main(void)
+int	main(void)
 {
-	char c = 'a';
-	printf("%d", isalpha(c));
+	char destm[] = "funda";
+	char srcm[] = "tu";
+	printf("%zu", ft_strlcpy(destm, srcm, 3));
 }
-*/

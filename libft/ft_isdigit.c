@@ -13,12 +13,11 @@
 
 #include "libft.h"
 
+//Rakam mı diye test eder
 
-int	isdigit(int c)
+int	ft_isdigit(int c)
 {
-	while(c <= '9' && c >= '0')
-		return(1);
-	return(0);
+	return (c <= '9' && c >= '0');
 }
 
 /*int	main(void)
@@ -26,10 +25,4 @@ int	isdigit(int c)
 	int c = '5';
 	printf("%d", isdigit(c));
 }
-*/
-
-//rakam mı diye test eder
-
-/* Daha kısa yoldan yapmak istersen
-	return(c <= '9' && c >= '0');
 */

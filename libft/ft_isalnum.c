@@ -12,17 +12,18 @@
 
 #include "libft.h"
 
+//alfanumerik karakter testi yapar (sayı veya harf mi)
+
 int	isalnum(int c)
 {
-	if ((c <= 'z' && c >= 'a') || (c <= 'Z' && c >= 'A') || (c >= '0' && c <= '9'))
-		return (1);
-	return (0);
+	return (ft_isalpha(c) || ft_isdigit(c));
 }
 
+/*
 int	main(void)
 {
 	int	c;
 	c = ',';
 	printf("%d", isalnum(c));
 }
-
+*/

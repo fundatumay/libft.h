@@ -10,4 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+// Ascii tablosunda bulunuyor mu diye sorgular
 
+#include "libft.h"
+
+int	ft_isascii(int c)
+{
+	return (c >= 0 && c <= 127);
+}
+
+/*
+int	main(void)
+{
+	int c = 9;
+	printf("%d", ft_isascii(c));
+}
+*/

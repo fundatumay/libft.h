@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isalpha.c                                          :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftumay <ftumay@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/13 15:46:57 by ftumay            #+#    #+#             */
-/*   Updated: 2022/02/13 16:09:43 by ftumay           ###   ########.tr       */
+/*   Created: 2022/02/27 20:17:55 by ftumay            #+#    #+#             */
+/*   Updated: 2022/02/27 20:17:58 by ftumay           ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-//alfabetik karakter testi yapar
+//Diziye (*s), istenilen harften (b), istenilen kadar(len) koyar
 
-int	ft_isalpha(int c)
+void	*ft_memset(void *s, int c, size_t len)
 {
-	return ((c <= 'z' && c >= 'a') || (c <= 'Z' && c >= 'A'));
+	size_t	i;
+
+	i = 0;
+	while (i < len)
+	{
+		((unsigned char *)s)[i] = c;
+		i++;
+	}
+	return (s);
 }
 
-/*int	main(void)
+/*
+int	main(void)
 {
-	char c = 'a';
-	printf("%d", isalpha(c));
+	char	a[] = "funda";
+	printf("%s", ft_memset(a, 'r', 2));
 }
 */
