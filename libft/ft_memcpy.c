@@ -26,15 +26,17 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-
 /*
 int	main(void)
 {
-	char src[] = "funda";
-	char dest[] = "tumay";
-	printf("%s", ft_memcpy(dest, src, 2));
+	char src2 [] = "start";
+	printf("%s\n", ft_memcpy(src2 + 2 , src2 , 3));
+	printf("%zu\n",(size_t)src2);
+
 }
 */
+
+
 
 //Void değişkenleri ilk başta bir chara atayıp daha sonra bu charlar üzerinden işlem yapabilirsin
 //Bu sayede her dest veya void kullanman gerektiğinde değişken dönüşümü yapmazsın

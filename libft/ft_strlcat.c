@@ -1,35 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftumay <ftumay@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/27 20:03:27 by ftumay            #+#    #+#             */
-/*   Updated: 2022/02/27 20:03:30 by ftumay           ###   ########.tr       */
+/*   Created: 2022/03/04 12:49:53 by ftumay            #+#    #+#             */
+/*   Updated: 2022/03/04 12:49:57 by ftumay           ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//stringin uzunluğunu döndürür
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlcat(char *dest, const char *src, size_t dest_size)
 {
 	size_t	i;
+	size_t	j;
 
 	i = 0;
-	while (s[i])
+	j = 0;
+	while(dest[j])
+		j++;
+	while(src[i] && i < dest_size)
+	{
+		dest[i + j] = src[i];
 		i++;
-	return (i);
+	}
+	dest[i + j] = '\0';
+	return(ft_strlen(dest));
 }
 
 /*
 int	main(void)
 {
-	char a[] = "tumaya";
-	printf("%zu", ft_strlen(a));
+	char	dest[] = "funda";
+	char	src[] = "tumay";
+	printf("%zu\n", ft_strlcat(dest, src, 5));
+	printf("%s\n", dest);
 }
 */
-
-//NULL'ı da sayıyor aslında ama index hesabı yaptığımız ve sıfır (0) dan başlattığımız için çıkan sonuç doğru oluyo
-//İndisi 0'dan başlatıp eleman sayısını bir eksiltmiş NULL'ı da koyarak bir arttırmış oluyoruz

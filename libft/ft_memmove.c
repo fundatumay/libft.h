@@ -11,34 +11,38 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+/*
+Çakışma olmadan src ve destin aynı dizi üzerinde olması durumunda-
+ve source destten büyükse gerçekleşir
+*/
 
 void	*ft_memmove(void *dest, const void *src, size_t len)
 {
-	size_t i;
-
-	i = 0;
 	if (!src && !dest)
-		return(0);
+		return (0);
+	if (dest < src)
+		ft_memcpy(dest, src, len);
 	if (dest > src)
 	{
-		while(len--)
+		while (len > 0)
 		{
-			*((unsigned char*) (len + dest)) = *((unsigned char*) (len + src));
+			len--;
+			((unsigned char *)dest)[len] = ((unsigned char *)src)[len];
 		}
 	}
-	else if
-		while (len--)
-		{
-			*((unsigned char *)dest)[i] = *((unsigned char *)src)[i];
-			i++;
-		}
-
-	return(dest);
+	return (dest);
 }
 
+/*
 int	main(void)
 {
-	char	src[] = "fundatumay";
-	printf("%s\n", ft_memmove((src + 5), src, 4));
-	printf("%s", memmove(src + 5, src, 4));
+	char	src [];
+
+	*src = "start";
+	printf("%s", ft_memmove(src + 2, src, 3));
 }
+*/
+
+
+// (size_t)dest kullanımı dest'in başlangıç indisini (pointer gibi) verir.
+// Burada dest'in başlangıç indisinin sayısal değerinden src'ninkini çıkarttık.

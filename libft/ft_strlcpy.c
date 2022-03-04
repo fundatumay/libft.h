@@ -12,27 +12,39 @@
 
 #include "libft.h"
 
-//Diziyi boyutu kadar kopyalıyor ancak dizinin uzunluğunu döndürüyor
+//Diziyi boyutu kadar kopyalıyor ancak src dizisinin uzunluğunu döndürüyor
 
-size_t	ft_strlcpy(char *dest, char *src, size_t destsize)
+size_t	ft_strlcpy(char *dest, const char *src, size_t dest_size)
 {
-	size_t i;
-	int	a;
+	size_t	i;
 
 	i = 0;
-	while (src[i] && i < (destsize - 1))
+	if (dest_size > 0)
 	{
-		dest[i] = src[i];
-		i++;
+		while (i < (dest_size - 1) && src[i])
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
 	}
-	src[i] = '\0';
-	a = ft_strlen(src);
-	return(a);
+	return (ft_strlen(src));
 }
 
+/*
 int	main(void)
 {
-	char destm[] = "funda";
-	char srcm[] = "tu";
-	printf("%zu", ft_strlcpy(destm, srcm, 3));
+	char dest[] = "funda";
+	char src[] = "tumaya";
+	printf("%zu\n", ft_strlcpy(dest, src, 3));
+	printf("%s", dest);
 }
+*/
+
+
+//Debug işlemlerinde kullanılıyor
+//Kopyalama işlemi yapılıyo fonksiyonu çalıştırıp dest dizisini çağırsam src kopyalanmış dest gelecek
+//Ama fonksiyonu çalıştırıp çıkan değeri bir integera atarsam src'nin uzunluğu dönecek
+//Geçmişte debug diye bir şey olmadığı için doğru işlem yapılmış mı diye strlcpy kullanılırmış
+//Strlcpy bana src'nin uzunluğunu veriyo ve ben dest'in uzunluğuna bakıp doğru veya yanlış yapmış kod diyebiliyorum????
+
