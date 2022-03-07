@@ -3,36 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftumay <ftumay@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: ftumay <ftumay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/07 00:14:14 by ftumay            #+#    #+#             */
-/*   Updated: 2022/03/07 00:14:17 by ftumay           ###   ########.tr       */
+/*   Created: 2022/03/07 13:44:41 by ftumay            #+#    #+#             */
+/*   Updated: 2022/03/07 14:50:18 by ftumay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-Samanlıkta iğne aramak. "fundatumay" içinde "da" arıyosun
-bulduğunda direkt d'den itibaren yazıyosun
-*/
+
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t	i;
-	size_t	j;
-	size_t	needle_len;
+	unsigned int		i;
+	unsigned int		j;
 
-	i = 0;
-	needle_len = ft_strlen(needle);
-	if (needle_len == 0)
+	if (needle[0] == '\0')
 		return ((char *)haystack);
+	i = 0;
 	while (haystack[i] != '\0' && i < len)
 	{
 		j = 0;
-		while (needle[j] != '\0' && haystack[i + j] == needle[j] && i + j < len)
+		if (haystack[i] == needle[j])
 		{
-			if (needle[j + 1] == '\0' && j == needle_len - 1)
-				return (&((char *)haystack)[i]);
-			j++;
+			while (i + j < len && haystack[i + j] == needle[j])
+			{
+				j++;
+				if (!needle[j])
+					return ((char *)&haystack[i]);
+			}
 		}
 		i++;
 	}
@@ -42,8 +40,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 /*
 int	main(void)
 {
-	char	haystack[] = "fundatumay";
-	char	needle[] = "da";
-	printf("%s", ft_strnstr(haystack, needle, 8));
+	char	*haystack = "fundatumay";
+	char	*needle = "da";
+	printf("%s", ft_strnstr(haystack, needle, 4));
 }
 */

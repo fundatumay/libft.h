@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ftumay <ftumay@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
+/*   By: ftumay <ftumay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 13:46:56 by ftumay            #+#    #+#             */
-/*   Updated: 2022/02/13 16:44:07 by ftumay           ###   ########.tr       */
+/*   Updated: 2022/03/07 16:51:34 by ftumay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef LIBFT_H
 # define LIBFT_H
 
@@ -36,5 +37,11 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+int		ft_atoi(const char *str);
+void	*ft_calloc(size_t count, size_t size);
+char	*ft_strdup(const char *str);
+
+//part2
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 #endif
