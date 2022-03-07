@@ -1,18 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftumay <ftumay@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/27 23:28:38 by ftumay            #+#    #+#             */
-/*   Updated: 2022/02/27 23:28:42 by ftumay           ###   ########.tr       */
+/*   Created: 2022/03/06 15:49:18 by ftumay            #+#    #+#             */
+/*   Updated: 2022/03/06 15:49:21 by ftumay           ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+//String içinde char değerini arıyor
+//Bulduğu son char dan sonrasını yazdırıyor
+
+char	*ft_strrchr(const char *s, int c)
 {
-	ft_memset(s, '\0', n);
+	int	str_len;
+
+	str_len = ft_strlen(s);
+	while (str_len >= 0)
+	{
+		if (s[str_len] == (char)c)
+			return ((char *)(s + str_len));
+		str_len--;
+	}
+	return (0);
 }
+
+/*
+int	main(void)
+{
+	char	s[] = "tripouille";
+	int	c = 'z';
+	printf("%s\n", ft_strrchr(s, c));
+}
+*/

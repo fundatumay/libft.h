@@ -36,8 +36,9 @@ int	main(void)
 }
 */
 
-
-
-//Void değişkenleri ilk başta bir chara atayıp daha sonra bu charlar üzerinden işlem yapabilirsin
-//Bu sayede her dest veya void kullanman gerektiğinde değişken dönüşümü yapmazsın
-//Ama değişken tanımladığın için bellekte ekstra yer kullanmış olursun.
+/*
+Void değişkenleri ilk başta bir chara atayıp daha sonra bu charlar üzerinden
+işlem yapabilirsin.
+Bu sayede her dest veya void kullanman gerektiğinde değişken dönüşümü yapmazsın.
+Ama değişken tanımladığın için bellekte ekstira yer kullanmış olursun.
+*/

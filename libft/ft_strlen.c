@@ -31,5 +31,7 @@ int	main(void)
 }
 */
 
-//NULL'ı da sayıyor aslında ama index hesabı yaptığımız ve sıfır (0) dan başlattığımız için çıkan sonuç doğru oluyo
-//İndisi 0'dan başlatıp eleman sayısını bir eksiltmiş NULL'ı da koyarak bir arttırmış oluyoruz
+//NULL'ı da sayıyor aslında ama index hesabı yaptığımız
+//ve sıfır (0) dan başlattığımız için çıkan sonuç doğru oluyo.
+//İndisi 0'dan başlatıp eleman sayısını bir eksiltmiş
+//NULL'ı da koyarak bir arttırıyoruz.

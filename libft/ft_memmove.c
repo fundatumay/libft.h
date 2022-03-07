@@ -42,7 +42,5 @@ int	main(void)
 	printf("%s", ft_memmove(src + 2, src, 3));
 }
 */
-
-
 // (size_t)dest kullanımı dest'in başlangıç indisini (pointer gibi) verir.
 // Burada dest'in başlangıç indisinin sayısal değerinden src'ninkini çıkarttık.

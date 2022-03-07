@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftumay <ftumay@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/27 23:28:38 by ftumay            #+#    #+#             */
-/*   Updated: 2022/02/27 23:28:42 by ftumay           ###   ########.tr       */
+/*   Created: 2022/03/06 13:53:32 by ftumay            #+#    #+#             */
+/*   Updated: 2022/03/06 13:53:34 by ftumay           ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+// büyük olarak gelen harfi küçük olarak döndürüyo
+
+int	ft_tolower(int c)
 {
-	ft_memset(s, '\0', n);
+	if (c <= 'Z' && c >= 'A')
+		c = c + 32;
+	return (c);
 }
+
+/*
+int	main(void)
+{
+	int	c  = 'A';
+	printf("%c", ft_tolower(c));
+}
+*/

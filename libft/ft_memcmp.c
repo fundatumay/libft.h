@@ -1,42 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftumay <ftumay@student.42kocaeli.com.tr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/28 10:49:42 by ftumay            #+#    #+#             */
-/*   Updated: 2022/02/28 10:49:46 by ftumay           ###   ########.tr       */
+/*   Created: 2022/03/06 19:49:30 by ftumay            #+#    #+#             */
+/*   Updated: 2022/03/06 19:49:33 by ftumay           ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-//Diziyi boyutu kadar kopyalıyor ancak src dizisinin uzunluğunu döndürüyor
+//s1 stringi ve s2 stringinin bytlerını karşılaştırır.
+//Aynılarsa 0 değillerse bytelerı arasındaki farkı döndürür.
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t dest_size)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	size_t	i;
 
 	i = 0;
-	if (dest_size > 0)
+	while (i < n)
 	{
-		while (i < (dest_size - 1) && src[i])
-		{
-			dest[i] = src[i];
-			i++;
-		}
-		dest[i] = '\0';
+		if (*(unsigned char *)(s1 + i) != *(unsigned char *)(s2 + i))
+			return (*(unsigned char *)(s1 + i) - *(unsigned char *)(s2 + i));
+		i++;
 	}
-	return (ft_strlen(src));
+	return (0);
 }
 
 /*
 int	main(void)
 {
-	char dest[] = "funda";
-	char src[] = "tumaya";
-	printf("%zu\n", ft_strlcpy(dest, src, 3));
-	printf("%s", dest);
+	char	s1[] = "fundd";
+	char	s2[] = "funda";
+	size_t		n = 5;
+	printf("%d", ft_memcmp(s1, s2, n));
 }
 */
