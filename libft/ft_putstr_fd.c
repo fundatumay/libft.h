@@ -1,43 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftumay <ftumay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/07 16:24:13 by ftumay            #+#    #+#             */
-/*   Updated: 2022/03/21 13:17:25 by ftumay           ###   ########.fr       */
+/*   Created: 2022/03/29 15:47:56 by ftumay            #+#    #+#             */
+/*   Updated: 2022/03/29 15:59:16 by ftumay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-//İstenilen string kadar mallocta yer ayırıyo, stringi içine koyup return yapar
-
-char	*ft_strdup(const char *str)
+void	ft_putstr_fd(char *s, int fd)
 {
-	char	*ret;
-	int		i;
+	size_t	i;
 
 	i = 0;
-	ret = malloc(sizeof(char) * ft_strlen(str) + 1);
-	if (!ret)
-		return (NULL);
-	while (str[i] != '\0')
+	while (s[i] != '\0')
 	{
-		ret[i] = str[i];
+		write(fd, &s[i], 1);
 		i++;
 	}
-	ret[i] = '\0';
-	return (ret);
 }
-
-/*
-int	main(void)
-{
-	char	str[] = "fundatumay";
-	printf("%s", ft_strdup(str));
-}
-*/
-
-//ft_strlen(str) + 1 kısmındaki 1 sona koyulacak NULL için

@@ -1,43 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftumay <ftumay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/07 16:24:13 by ftumay            #+#    #+#             */
-/*   Updated: 2022/03/21 13:17:25 by ftumay           ###   ########.fr       */
+/*   Created: 2022/03/21 13:24:50 by ftumay            #+#    #+#             */
+/*   Updated: 2022/03/21 14:55:11 by ftumay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+//C = {'one','two','three'}; -->> str = strjoin(C) -->> str = 'one two three'
 
-//İstenilen string kadar mallocta yer ayırıyo, stringi içine koyup return yapar
-
-char	*ft_strdup(const char *str)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*ret;
 	int		i;
+	int		j;
+	char	*newstr;
 
-	i = 0;
-	ret = malloc(sizeof(char) * ft_strlen(str) + 1);
-	if (!ret)
+	if (!s1 || !s2)
 		return (NULL);
-	while (str[i] != '\0')
+	newstr = (char *) malloc(sizeof(char) * ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!newstr)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s1[i] != '\0')
 	{
-		ret[i] = str[i];
+		newstr[i] = s1[i];
 		i++;
 	}
-	ret[i] = '\0';
-	return (ret);
+	while (s2[j] != '\0')
+	{
+		newstr[i + j] = s2[j];
+		j++;
+	}
+	newstr[i + j] = '\0';
+	return (newstr);
 }
-
-/*
-int	main(void)
-{
-	char	str[] = "fundatumay";
-	printf("%s", ft_strdup(str));
-}
-*/
-
-//ft_strlen(str) + 1 kısmındaki 1 sona koyulacak NULL için

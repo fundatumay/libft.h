@@ -3,36 +3,36 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hsozan <hsozan@student.42.tr>              +#+  +:+       +#+         #
+#    By: ftumay <ftumay@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/02/10 17:27:04 by hsozan            #+#    #+#              #
-#    Updated: 2022/02/13 19:56:34 by ftumay           ###   ########.tr        #
+#    Created: 2022/03/21 13:25:59 by ftumay            #+#    #+#              #
+#    Updated: 2022/03/29 14:18:30 by ftumay           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
-PATH_INCLUDE = ./
-FLAG = -Wall -Wextra -Werror
-OPTION = -c
-SRC = $(shell find . ! -name "ft_lst*.c" -name "ft_*.c")
-BONUS = *.c
-OBJ = $(SRC:.c=.o)
+NAME	:= libft.a
+CC 	:= gcc
+CFLAGS	:= -Wall -Wextra -Werror -I. -c
+FILES	:= $(shell find . -type f ! -name "ft_lst*.c" -name "ft_*.c")
+OBJ		:= $(FILES:%.c=%.o)
 
+BSRC	:= $(wildcard ft_lst*.c)
+B_OBJ	:= $(BSRC:%.c=%.o)
 
 all: $(NAME)
 
-$(NAME):
-	gcc $(FLAG) $(OPTION) $(SRC) -I $(PATH_INCLUDE)
-	ar rc $(NAME) *.o
-	ranlib $(NAME)
-bonus:
-	gcc $(FLAG) $(OPTION) $(BONUS) -I $(PATH_INCLUDE)
-	ar rc $(NAME) *.o
-	ranlib $(NAME)
+$(NAME): $(OBJ)
+	ar -rcs $(NAME) $(OBJ)
+
+bonus: $(OBJ) $(B_OBJ)
+	ar -rcs $(NAME) $(OBJ) $(B_OBJ)
 
 clean:
-	/bin/rm -f  *.o
+	@rm -f *.o
+
 fclean: clean
-	/bin/rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all bonus clean fclean re
