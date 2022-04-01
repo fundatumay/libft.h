@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftumay <ftumay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 15:46:06 by ftumay            #+#    #+#             */
-/*   Updated: 2022/03/29 16:35:16 by ftumay           ###   ########.fr       */
+/*   Created: 2022/03/31 21:42:34 by ftumay            #+#    #+#             */
+/*   Updated: 2022/04/01 04:04:15 by ftumay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// fd dediğimiz şey file descriptor oluyor
-// 0 = stndart girdi / 1 = standart çıktı/ 2 = standart hata
-// 3 ve üzerindeki tüm sayılar içinse oluşturduğum text dosyasına yazar.
+//İlk parametre t_list tipinde tanımlanan bir dizinin ilk elemanını simgeler
+//Yani ilk elemanın pointerının adresi demek
+//İkinci parametre dizinin sonuna yeni bir dizi ekler
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	write(fd, &c, 1);
+	t_list	*aux;
+
+	if (!new)
+		return ;
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
+	}
+	aux = ft_lstlast(*lst);
+	aux->next = new;
 }

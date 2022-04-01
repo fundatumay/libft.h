@@ -1,22 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftumay <ftumay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 15:46:06 by ftumay            #+#    #+#             */
-/*   Updated: 2022/03/29 16:35:16 by ftumay           ###   ########.fr       */
+/*   Created: 2022/04/01 04:41:28 by ftumay            #+#    #+#             */
+/*   Updated: 2022/04/01 04:50:32 by ftumay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// fd dediğimiz şey file descriptor oluyor
-// 0 = stndart girdi / 1 = standart çıktı/ 2 = standart hata
-// 3 ve üzerindeki tüm sayılar içinse oluşturduğum text dosyasına yazar.
-
-void	ft_putchar_fd(char c, int fd)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	write(fd, &c, 1);
+	t_list	*new_lst;
+	t_list	*elem;
+
+	if (!lst)
+		return (0);
+	new_lst = 0;
+	while (lst)
+	{
+		elem = ft_lstnew(f(lst->content));
+		if (!(elem))
+		{
+			ft_lstclear(&new_lst, del);
+			return (0);
+		}
+		ft_lstadd_back(&new_lst, elem);
+		lst = lst->next;
+	}
+	return (new_lst);
 }
+
+//yazdırğımız fonkiyonu alıp istediği karakteri del leyip sonuna yazdırır

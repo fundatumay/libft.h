@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftumay <ftumay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 15:46:06 by ftumay            #+#    #+#             */
-/*   Updated: 2022/03/29 16:35:16 by ftumay           ###   ########.fr       */
+/*   Created: 2022/04/01 04:19:38 by ftumay            #+#    #+#             */
+/*   Updated: 2022/04/01 04:34:54 by ftumay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// fd dediğimiz şey file descriptor oluyor
-// 0 = stndart girdi / 1 = standart çıktı/ 2 = standart hata
-// 3 ve üzerindeki tüm sayılar içinse oluşturduğum text dosyasına yazar.
-
-void	ft_putchar_fd(char c, int fd)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	write(fd, &c, 1);
+	t_list	*aux;
+
+	if (!*lst)
+		return ;
+	while (*lst)
+	{
+		aux = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = aux;
+	}
+	*lst = 0;
 }

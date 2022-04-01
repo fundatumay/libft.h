@@ -6,7 +6,7 @@
 /*   By: ftumay <ftumay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 14:08:18 by ftumay            #+#    #+#             */
-/*   Updated: 2022/03/07 15:22:09 by ftumay           ###   ########.fr       */
+/*   Updated: 2022/04/01 05:03:14 by ftumay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,29 @@
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	ret_value;
-	int	polarity;
+	long int	num;
+	int			isaret;
 
-	i = 0;
-	polarity = 1;
-	ret_value = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	isaret = 1;
+	num = 0;
+	while ((*str >= 9 && *str <= 13) || (*str == 32))
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		if (str[i] == '-')
-			polarity *= -1;
-		i++;
+		if (*str == '-')
+			isaret = -1;
+	str++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (*str != 0 && *str >= '0' && *str <= '9')
 	{
-		ret_value = ret_value * 10 + str[i] - 48;
-		i++;
+		num = num * 10 + (*str - '0') * isaret;
+		if (num > 21474483647)
+			return (-1);
+		if (num < -2147483648)
+			return (0);
+		str++;
 	}
-	return (ret_value * polarity);
+	return (num);
 }
 
 /*

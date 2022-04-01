@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftumay <ftumay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 15:46:06 by ftumay            #+#    #+#             */
-/*   Updated: 2022/03/29 16:35:16 by ftumay           ###   ########.fr       */
+/*   Created: 2022/03/31 20:34:07 by ftumay            #+#    #+#             */
+/*   Updated: 2022/04/01 04:57:20 by ftumay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// fd dediğimiz şey file descriptor oluyor
-// 0 = stndart girdi / 1 = standart çıktı/ 2 = standart hata
-// 3 ve üzerindeki tüm sayılar içinse oluşturduğum text dosyasına yazar.
+//Listedeki eleman sayısını bulur.
+//lst şu an bir adres tutuyo. lst'nin nextini lst ye atayınca
+//lst artık lst nin next elemanının adresini tutuyo
 
-void	ft_putchar_fd(char c, int fd)
+int	ft_lstsize(t_list *lst)
 {
-	write(fd, &c, 1);
+	size_t	count;
+
+	count = 0;
+	while (lst && ++count)
+		lst = lst->next;
+	return (count);
 }

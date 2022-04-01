@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftumay <ftumay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 15:46:06 by ftumay            #+#    #+#             */
-/*   Updated: 2022/03/29 16:35:16 by ftumay           ###   ########.fr       */
+/*   Created: 2022/03/29 16:23:53 by ftumay            #+#    #+#             */
+/*   Updated: 2022/03/29 16:47:28 by ftumay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// fd dediğimiz şey file descriptor oluyor
-// 0 = stndart girdi / 1 = standart çıktı/ 2 = standart hata
-// 3 ve üzerindeki tüm sayılar içinse oluşturduğum text dosyasına yazar.
+//Fonksiyon s stringini yazdırdıkta sonra sona new line atar.
+//sondaki 1 bir karakter yazılacak anlamına gelir
+//eğer s'nin uzunluğu kadar dersen o kadar yazdırır.
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_putendl_fd(char *s, int fd)
 {
-	write(fd, &c, 1);
+	int	i;
+
+	i = 0;
+	if (!s)
+		return ;
+	while (s[i] != '\0')
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
+	write(fd, "\n", 1);
 }
