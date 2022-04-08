@@ -6,7 +6,7 @@
 /*   By: ftumay <ftumay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:36:35 by ftumay            #+#    #+#             */
-/*   Updated: 2022/03/07 16:22:38 by ftumay           ###   ########.fr       */
+/*   Updated: 2022/04/08 22:59:07 by ftumay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,10 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void	*str;
+	void	*ret;
 
-	str = malloc(count * size);
-	if (str == 0)
-		return (0);
-	ft_bzero(str, count * size);
-	return (str);
+	ret = malloc(count * size);
+	if (ret)
+		ft_bzero(ret, count * size);
+	return (ret);
 }
